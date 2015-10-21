@@ -15,6 +15,7 @@ import java.util.List;
  * @author Nguyen Hoai Nam
  */
 public class AdminModel {
+    //get list admin
     public List<User> getUsersAdmin(){
         List<User> users = new ArrayList<>();
         List<User> users_admin = new ArrayList<>();
@@ -27,6 +28,10 @@ public class AdminModel {
             
         }
         return users_admin;
+    }
+    //add new admin
+    public  void insertAdmin(User user){
+        UserDAO.getInstance().save(user);
     }
     
 }

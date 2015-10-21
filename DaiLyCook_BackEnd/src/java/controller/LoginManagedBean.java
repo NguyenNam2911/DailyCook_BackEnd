@@ -37,15 +37,18 @@ public class LoginManagedBean {
                 JSFutil.navigate("index");
             } else {
                 pass = true;
+                email = false;
             }
         } else {
             email = true;
+            pass = false;
         }
     }
-    public void logOut(){       
-       JSFutil.navigate("login");
+
+    public void logOut() {
+        JSFutil.navigate("login");
     }
-    
+
     // contructer
     public LoginManagedBean() {
         pass = false;
@@ -53,7 +56,6 @@ public class LoginManagedBean {
     }
 
     //get and set
-
     public boolean isPass() {
         return pass;
     }

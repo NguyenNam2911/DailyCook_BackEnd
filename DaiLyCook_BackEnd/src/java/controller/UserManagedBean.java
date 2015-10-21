@@ -6,7 +6,10 @@
 package controller;
 
 import entity.User;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -30,6 +33,12 @@ public class UserManagedBean {
     String filter;
 
 // method
+    public String convertTime(long time) {
+        Date date = new Date(time);
+        Format format = new SimpleDateFormat("dd-MM-yyyy");
+        return format.format(date);
+    }
+
     public UserManagedBean() {
         users = userModel.getUsersNomrmal();
         filter = "Filter";
