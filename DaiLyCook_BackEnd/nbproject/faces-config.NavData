@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="assets/morris.js-0.4.3/examples/decimal-custom-hover.html" x="1400" y="300" zoom="true"/>
+        <Node id="assets/chart-master/samples/doughnut.html" x="2400" y="150" zoom="true"/>
+        <Node id="assets/ckeditor/samples/inlineall.html" x="1150" y="1050" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/years.html" x="2150" y="300" zoom="true"/>
+        <Node id="assets/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" x="1650" y="300" zoom="true"/>
+        <Node id="assets/ckeditor/samples/xhtmlstyle.html" x="2900" y="150" zoom="true"/>
+        <Node id="assets/ckeditor/samples/api.html" x="118" y="151" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/area.html" x="400" y="750" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/htmlwriter/outputhtml.html" x="2150" y="150" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/days.html" x="150" y="1200" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/_template.html" x="1650" y="600" zoom="true"/>
+        <Node id="assets/chart-master/docs/index.html" x="2400" y="450" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/basic-views.html" x="650" y="750" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/non-continuous.html" x="594" y="159" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/gcal.html" x="650" y="1050" zoom="true"/>
+        <Node id="assets/ckeditor/samples/ajax.html" x="2650" y="150" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/no-grid.html" x="400" y="1200" zoom="true"/>
+        <Node id="assets/jquery-file-upload/cors/result.html" x="1400" y="600" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/wysiwygarea/fullpage.html" x="261" y="328" zoom="true"/>
+        <Node id="assets/chart-master/samples/line.html" x="-37" y="281" zoom="true"/>
+        <Node id="assets/chart-master/samples/sixup.html" x="1400" y="750" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/external-dragging.html" x="650" y="1500" zoom="true"/>
+        <Node id="assets/jquery-easy-pie-chart/examples/index.html" x="1400" y="150" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/htmlwriter/outputforflash.html" x="150" y="1650" zoom="true"/>
+        <Node id="assets/chart-master/samples/radar.html" x="400" y="1500" zoom="true"/>
+        <Node id="*" x="900" y="1350" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/bar-colors.html" x="1650" y="750" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/negative.html" x="1150" y="300" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/diagonal-xlabels.html" x="1400" y="1050" zoom="true"/>
+        <Node id="assets/jquery-file-upload/cors/postmessage.html" x="150" y="450" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/months-no-smooth.html" x="1650" y="150" zoom="true"/>
+        <Node id="assets/chart-master/samples/pie.html" x="650" y="1350" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/dialog/dialog.html" x="2150" y="450" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/spec/specs.html" x="650" y="900" zoom="true"/>
+        <Node id="assets/ckeditor/samples/inlinebycode.html" x="900" y="1050" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/default.html" x="150" y="1800" zoom="true"/>
+        <Node id="assets/ckeditor/samples/tabindex.html" x="1900" y="600" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/non-date.html" x="400" y="600" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/theme.html" x="42" y="85" zoom="true"/>
+        <Node id="user_View.xhtml" x="1650" y="900" zoom="true"/>
+        <Node id="assets/ckeditor/samples/uicolor.html" x="900" y="450" zoom="true"/>
+        <Node id="assets/jquery-file-upload/test/index.html" x="900" y="600" zoom="true"/>
+        <Node id="assets/chart-master/samples/polarArea.html" x="1150" y="1200" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/donut-formatter.html" x="150" y="600" zoom="true"/>
+        <Node id="assets/ckeditor/samples/readonly.html" x="650" y="600" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/magicline/magicline.html" x="2400" y="300" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/selectable.html" x="900" y="750" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/timestamps.html" x="150" y="900" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/area-as-line.html" x="900" y="900" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/events.html" x="1900" y="750" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/toolbar/toolbar.html" x="1150" y="600" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/bar.html" x="1400" y="900" zoom="true"/>
+        <Node id="assets/chart-master/site/index.html" x="1150" y="450" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/stacked_bars.html" x="400" y="1350" zoom="true"/>
+        <Node id="assets/ckeditor/samples/replacebyclass.html" x="1150" y="900" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/goals.html" x="2150" y="600" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/json.html" x="400" y="1050" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/donut-colors.html" x="465" y="82" zoom="true"/>
+        <Node id="login.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="assets/ckeditor/plugins/wsc/dialogs/ciframe.html" x="1150" y="750" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/diagonal-xlabels-bar.html" x="150" y="750" zoom="true"/>
+        <Node id="assets/jquery-file-upload/index.html" x="493" y="267" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/weeks.html" x="1400" y="450" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/updating.html" x="650" y="1200" zoom="true"/>
+        <Node id="assets/fullcalendar/demos/agenda-views.html" x="150" y="1350" zoom="true"/>
+        <Node id="assets/jquery-knob/index.html" x="1150" y="150" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/dst.html" x="650" y="450" zoom="true"/>
+        <Node id="assets/ckeditor/samples/uilanguages.html" x="2650" y="300" zoom="true"/>
+        <Node id="assets/ckeditor/samples/plugins/enterkey/enterkey.html" x="150" y="1050" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="1650" zoom="true"/>
+        <Node id="assets/ckeditor/samples/replacebycode.html" x="400" y="450" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/donut.html" x="1900" y="300" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/bar-no-axes.html" x="1900" y="450" zoom="true"/>
+        <Node id="logout.xhtml" x="3150" y="150" zoom="true"/>
+        <Node id="assets/chart-master/samples/bar.html" x="400" y="900" zoom="true"/>
+        <Node id="assets/ckeditor/samples/divreplace.html" x="1650" y="450" zoom="true"/>
+        <Node id="assets/ckeditor/samples/appendto.html" x="900" y="1200" zoom="true"/>
+        <Node id="assets/morris.js-0.4.3/examples/quarters.html" x="705" y="352" zoom="true"/>
+        <Node id="assets/ckeditor/samples/index.html" x="1900" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
