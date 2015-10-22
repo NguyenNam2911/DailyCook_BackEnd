@@ -64,6 +64,7 @@ public class AdminManagedBean extends Object{
     }
 
     public void SearchUser() {
+        users = adminModel.getUsersAdmin();
         List<User> search_user = new ArrayList<>();
         if (search != null) {
             for (User user : users) {
