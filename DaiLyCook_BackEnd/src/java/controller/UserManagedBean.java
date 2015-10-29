@@ -35,10 +35,7 @@ public class UserManagedBean {
     User userSelected =  new User();
 
 // method
-    public String UserDetail(User u){
-        userSelected = u;
-        return "user_detail";
-    }
+    
     
     public String convertTime(long time) {
         Date date = new Date(time);
@@ -52,8 +49,9 @@ public class UserManagedBean {
 
     }
 
-    public void SearchUser() {
+    public void searchUser() {
         List<User> search_user = new ArrayList<>();
+        users = userModel.getUsersNomrmal();
         if (search != null) {
             for (User user : users) {
                 if (user.getDisplayName().contains(search)) {
@@ -66,8 +64,9 @@ public class UserManagedBean {
         search = "";
     }
 
-    public void Filter() {
+    public void filter() {
         List<User> filter_user = new ArrayList<>();
+        users = userModel.getUsersNomrmal();
         if (!"Filter".equals(filter)) {
             switch (filter) {
                 case "Active":

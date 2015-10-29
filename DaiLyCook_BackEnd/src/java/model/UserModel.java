@@ -29,6 +29,7 @@ public class UserModel {
         }
         return users_normal;
     }
+//  getUsersNomrmal  namnh
     public User getUserByID(String id){
         return UserDAO.getInstance().getUser(id);
     }

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -76,16 +77,23 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sub-menu">
+                            <li class="sub-menu" id="li-admin">
                                 <a href="javascript:;" class="">
                                     <i class="icon_archive"></i>
                                     <span>Admin</span>
                                     <span class="menu-arrow arrow_carrot-right"></span>
                                 </a>
                                 <ul class="sub">
-                                    <li><a class="" href="admin_managerment.xhtml">View Managerment</a></li>  
+                                    <li><a class="" href="admin_managerment.xhtml">View Admin</a></li>  
                                 </ul>
-                            </li>   
+                            </li> 
+                            <script>
+                            var role = #{loginManagedBean.flagAdmin};
+                            if (role) {
+                                var element = document.getElementById("li-admin");
+                                element.parentNode.removeChild(element);
+                            }
+                            </script> 
                             <li class="sub-menu">
                                 <a href="javascript:;" class="">
                                     <i class="icon_profile"></i>
@@ -154,11 +162,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="profile-widget profile-widget-info">
-                                    <div class="panel-body" style="background-image:url(img/bg-profile2.jpg)">
+                                    <div class="panel-body" style="background-image:url(#{userDetailManagedBean.userSelected.coverUrl});background-size: 100% 100% ">
                                         <div class="col-lg-2 col-sm-2">
-                                            <h4><b>Jenifer Smith</b></h4>
+                                            <h4><b>#{userDetailManagedBean.userSelected.displayName}</b></h4>
                                             <div class="follow-ava">
-                                                <img alt="" src="img/profile-widget-avatar.jpg"/>
+                                                <img alt="" src="#{userDetailManagedBean.userSelected.avatarUrl}"/>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-4 follow-info">
@@ -175,8 +183,8 @@
                                                 <li class="active">
                                                     <i class="fa fa-list-alt fa-2x"> </i>
                                                     <br></br>
-                                                        <div class="count">135</div>
-                                                        <div class="title">Recipes</div>
+                                                    <div class="count">#{userDetailManagedBean.userSelected.numberRecipes}</div>
+                                                    <div class="title">Recipes</div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -184,7 +192,7 @@
                                             <ul class="green-bg">
                                                 <li class="active">
                                                     <i class="fa fa-check fa-2x"> </i>
-                                                    <div class="count">2</div>
+                                                    <div class="count">#{userDetailManagedBean.userSelected.numberFollowing}</div>
                                                     <div class="title">Following</div>
                                                 </li>
                                             </ul>
@@ -194,8 +202,8 @@
                                                 <li class="active">
                                                     <i class="fa fa-check-square fa-2x"> </i>
                                                     <br></br>
-                                                        <div class="count">15</div>
-                                                        <div class="title">Followed</div>
+                                                    <div class="count">#{userDetailManagedBean.userSelected.numberFollower}</div>
+                                                    <div class="title">Followed</div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -212,76 +220,39 @@
                                         <section class="panel">
                                             <div class="bio-graph-info">
                                                 <h1>Profile</h1>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <p>
-                                                            <span>Introduce</span>
-                                                            : I tried using this CSS code, but it looks like there is still something behind the heading and body and the panel doesn't get transparent.I tried using this CSS code, but it looks like there is still something behind the heading and body and the panel doesn't get transparent.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>User Name </span>
-                                                            
-                                                            <h:outputText value="#{userManagedBean.userSelected.displayName}"/>
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Role </span>
-                                                            <h:outputText value="#{userManagedBean.userSelected.role}"/>
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Registered Date </span>
-                                                            : 27 August 1987
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Status </span>
-                                                            : Ban
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Email </span>
-                                                            : jenifer@mailname.com
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Ban number </span>
-                                                            : 2
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Facebook </span>
-                                                            : facebook.com
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Ban From </span>
-                                                            : 27 August 1987
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Language </span>
-                                                            : English
-                                                        </p>
-                                                    </div>
-                                                    <div class="bio-row">
-                                                        <p>
-                                                            <span>Ban End </span>
-                                                            : 27 August 1987
-                                                        </p>
-                                                    </div>
+                                                <div align="center">
+                                                    <p:panel>
+                                                        <table style="width: 60%;" cellpadding="20">
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Introduce"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.introduce}"></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="User Name"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.displayName}"></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Email"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.email}"></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Roll"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.role}"></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Phone Number"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.phone}"></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Register Date"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.convertTime(userDetailManagedBean.userSelected.registeredTime)} "></h:outputText></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 30% ;color:#000088"  ><strong><h:outputText value="Date Of Birth"/></strong></td>
+                                                                <td><h:outputText value="#{userDetailManagedBean.userSelected.dob}"></h:outputText></td>
+                                                            </tr>
+                                                        </table >
+                                                    </p:panel>
                                                 </div>
                                             </div>
                                         </section>
@@ -336,49 +307,49 @@
             <script src="js/jquery.slimscroll.min.js"></script>
             <script>
 
-                //knob
-                $(function () {
-                    $(".knob").knob({
-                        'draw': function () {
-                            $(this.i).val(this.cv + '%')
-                        }
-                    })
-                });
+                            //knob
+                            $(function () {
+                                $(".knob").knob({
+                                    'draw': function () {
+                                        $(this.i).val(this.cv + '%')
+                                    }
+                                })
+                            });
 
-                //carousel
-                $(document).ready(function () {
-                    $("#owl-slider").owlCarousel({
-                        navigation: true,
-                        slideSpeed: 300,
-                        paginationSpeed: 400,
-                        singleItem: true
+                            //carousel
+                            $(document).ready(function () {
+                                $("#owl-slider").owlCarousel({
+                                    navigation: true,
+                                    slideSpeed: 300,
+                                    paginationSpeed: 400,
+                                    singleItem: true
 
-                    });
-                });
+                                });
+                            });
 
-                //custom select box
+                            //custom select box
 
-                $(function () {
-                    $('select.styled').customSelect();
-                });
+                            $(function () {
+                                $('select.styled').customSelect();
+                            });
 
-                /* ---------- Map ---------- */
-                $(function () {
-                    $('#map').vectorMap({
-                        map: 'world_mill_en',
-                        series: {
-                            regions: [{
-                                    values: gdpData,
-                                    scale: ['#000', '#000'],
-                                    normalizeFunction: 'polynomial'
-                                }]
-                        },
-                        backgroundColor: '#eef3f7',
-                        onLabelShow: function (e, el, code) {
-                            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-                        }
-                    });
-                });
+                            /* ---------- Map ---------- */
+                            $(function () {
+                                $('#map').vectorMap({
+                                    map: 'world_mill_en',
+                                    series: {
+                                        regions: [{
+                                                values: gdpData,
+                                                scale: ['#000', '#000'],
+                                                normalizeFunction: 'polynomial'
+                                            }]
+                                    },
+                                    backgroundColor: '#eef3f7',
+                                    onLabelShow: function (e, el, code) {
+                                        el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                                    }
+                                });
+                            });
             </script>
 
         </f:view>

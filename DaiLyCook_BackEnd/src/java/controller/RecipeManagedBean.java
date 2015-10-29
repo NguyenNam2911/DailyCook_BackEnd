@@ -39,7 +39,7 @@ public class RecipeManagedBean {
         return format.format(date);
     }
 
-    public void Filter() {
+    public void filter() {
         List<Recipe> filter_Recipe = new ArrayList<>();
         recipes = recipeModel.getAllRecipe();
         if (!"Filter".equals(filter)) {
@@ -74,7 +74,7 @@ public class RecipeManagedBean {
 
     }
 
-    public void SearchRecipe() {
+    public void searchRecipe() {
         List<Recipe> search_recipe = new ArrayList<>();
         recipes = recipeModel.getAllRecipe();
         if (search != null) {
