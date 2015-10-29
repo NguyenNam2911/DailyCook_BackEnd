@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Recipe;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.query.Query;
 
@@ -28,6 +29,17 @@ public class RecipeDAO extends AbstractDAO {
         try {
             Query<Recipe> query = datastore.createQuery(Recipe.class).field("_id").equal(new ObjectId(recipeId));
             return query.get();
+        } catch (Exception ex) {
+
+        }
+
+        return null;
+    }
+    
+    public List<Recipe> getAllRecipe() {
+        try {
+            Query<Recipe> query = datastore.createQuery(Recipe.class);
+            return query.asList();
         } catch (Exception ex) {
 
         }

@@ -7,12 +7,24 @@ package model;
 
 import dao.RecipeDAO;
 import entity.Recipe;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
- * @author KhanhDN
+ * @author Nguyen Hoai Nam
  */
 public class RecipeModel {
     
-    
+    //get all recipe
+   public List<Recipe> getAllRecipe(){
+       List<Recipe> list = new ArrayList<>();
+       list = RecipeDAO.getInstance().getAllRecipe();
+       return list;
+   }
+   
+   public Recipe getRecipeByID(String id){
+        return RecipeDAO.getInstance().getRecipe(id);
+    }
 }
