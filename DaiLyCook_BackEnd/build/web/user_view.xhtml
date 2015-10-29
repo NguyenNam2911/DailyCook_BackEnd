@@ -170,12 +170,12 @@
                                         <b>Users Information Table</b>
                                     </header>
                                     <div class="panel-body">
-                                        <div class="row">
+                                        <div class="row" style="margin-bottom: 50px">
                                             <div  class="search-panel">
                                                 <!--  search form start -->
                                                 <h:form >
                                                     <h:commandButton class="button-search" action="#{userManagedBean.SearchUser()}"/>
-                                                    <h:inputText class="input-search"  a:placeholder="Search By Name" value="#{userManagedBean.search}"/>
+                                                    <h:inputText class="input-search"  a:placeholder="Search By Title" value="#{userManagedBean.search}"/>
                                                 </h:form>
                                                 <!--  search form end -->                
                                             </div>
@@ -190,6 +190,7 @@
                                                 </div>    
 
                                             </h:form>
+                                            <!--end fill form-->
                                         </div>
 
 
@@ -227,17 +228,7 @@
                                                     </c:forEach>
                                                 </h:form>
                                             </tbody>
-                                            <div>
-                                                <ul class="pagination pull-right">
-                                                    <li><a href="#">«</a></li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#">»</a></li>
-                                                </ul>
-                                            </div>
+                                            
                                         </table>
                                     </div>
                                 </div>
