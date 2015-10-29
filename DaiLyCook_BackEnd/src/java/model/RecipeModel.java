@@ -23,4 +23,8 @@ public class RecipeModel {
        list = RecipeDAO.getInstance().getAllRecipe();
        return list;
    }
+   
+   public Recipe getRecipeByID(String id){
+        return RecipeDAO.getInstance().getRecipe(id);
+    }
 }

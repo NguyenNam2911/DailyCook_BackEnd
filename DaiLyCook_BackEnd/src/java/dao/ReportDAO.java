@@ -5,13 +5,31 @@
  */
 package dao;
 
+import entity.Report;
+import java.util.List;
+import org.mongodb.morphia.query.Query;
+
 /**
  *
  * @author KhanhDN
  */
-public class ReportDAO {
+public class ReportDAO extends AbstractDAO{
+    private static final ReportDAO instance = new ReportDAO();
     
-    public static void main(String[] args) {
-        
+    private ReportDAO(){
+        datastore.ensureIndexes();
+    }
+    
+    public static final ReportDAO getInstance() {
+        return instance;
+    }
+    
+    public List<Report> getAllReport(){
+        try{
+            Query<Report> query = datastore.createQuery(Report.class);
+            return query.asList();
+        }catch (Exception ex){
+        }
+        return null;
     }
 }
