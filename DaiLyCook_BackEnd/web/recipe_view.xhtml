@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -27,6 +30,7 @@
         <link href="css/style.css" rel="stylesheet"/>
         <link href="css/style-responsive.css" rel="stylesheet" />
         <link href="css/xcharts.min.css" rel=" stylesheet"/>	
+        <link href="css/handmade.css" rel="stylesheet"/>
         <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet"/>
 
         <title>DailyCook.Admin</title>
@@ -159,23 +163,26 @@
                                         <b>Recipes Table</b>
                                     </header>
                                     <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
+                                        <div class="row" style="margin-bottom: 50px">
+                                            <div  class="search-panel">
                                                 <!--  search form start -->
-                                                <form class="navbar-form">
-                                                    <input class="form-control" placeholder="Search" type="text"/>
-                                                </form>
+                                                <h:form >
+                                                    <h:commandButton class="button-search" action="#{recipeManagedBean.SearchRecipe()}"/>
+                                                    <h:inputText class="input-search"  a:placeholder="Search By Name" value="#{recipeManagedBean.search}"/>
+                                                </h:form>
                                                 <!--  search form end -->                
                                             </div>
-                                            <div class="col-lg-2">
-                                                <select class="form-control m-bot15">
-                                                    <option>Filter</option>
-                                                    <option>User</option>
-                                                    <option>Report</option>
-                                                    <option>Title</option>
-                                                    <option>Category</option>
-                                                </select>  
-                                            </div>                  
+                                            <h:form>
+                                                <div class="ddl-filter">
+                                                    <h:commandButton class="button-filter" action="#{userManagedBean.Filter()}"/>
+                                                    <h:selectOneMenu value="#{userManagedBean.filter}" onclick="">
+                                                        <f:selectItem itemValue="Filter" itemLabel="All status"/>
+                                                        <f:selectItem itemValue="Active" itemLabel="Active"/>
+                                                        <f:selectItem itemValue="Banned" itemLabel="Banned"/>
+                                                    </h:selectOneMenu>
+                                                </div>    
+
+                                            </h:form>
                                         </div>
                                         <table class="table table-striped table-advance table-hover">
                                             <tbody>
@@ -185,101 +192,38 @@
                                                     <th><i class="icon_image"></i> Image</th>
                                                     <th><i class="icon_profile"></i> By User</th>
                                                     <th><i class="icon_calendar"></i> Created Date</th>
-                                                    <th><i class="icon_tag_alt"></i> Category</th>
+                                                    <th><i class="icon_heart"></i> Favorite Number</th>
                                                     <th><i class="icon_pencil_alt"></i> Status</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><a href="recipe_detail.html">Fried Noodle</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar1.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Angeline Mcclain</a></td>
-                                                    <td>2004-07-06</td>
-                                                    <td>Fried</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><a href="recipe_detail.html">Robert Lee</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar2.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Sung Carlson</a></td>
-                                                    <td>2011-01-10</td>
-                                                    <td>Mix</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><a href="recipe_detail.html">Bryon Osborne</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar3.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Bryon Osborne</a></td>
-                                                    <td>2006-10-29</td>
-                                                    <td>Fall</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr style="color: #F00">
-                                                    <td>4</td>
-                                                    <td><a href="recipe_detail.html">Hot Girl</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar4.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Bryon Osborne</a></td>
-                                                    <td>2011-12-15</td>
-                                                    <td>Egg</td>
-                                                    <td>Report</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td><a href="recipe_detail.html">Selina Fitzgerald</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar5.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Selina Fitzgerald</a></td>
-                                                    <td>2003-01-06</td>
-                                                    <td>Diet</td>
-                                                    <td>Approve </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td><a href="recipe_detail.html">Abraham Avery</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar6.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Abraham Avery</a></td>
-                                                    <td>2006-07-14</td>
-                                                    <td>Fruit</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td><a href="recipe_detail.html">Caren Mcdowell</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar7.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Caren Mcdowell</a></td>
-                                                    <td>2002-03-29</td>
-                                                    <td>Salad</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr style="color: #F00">
-                                                    <td>8</td>
-                                                    <td><a href="recipe_detail.html">Beautiful Girl</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar8.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Owen Bingham</a></td>
-                                                    <td>2013-04-06</td>
-                                                    <td>Summer</td>
-                                                    <td>Report</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td><a href="recipe_detail.html">Ahmed Dean</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar9.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Ahmed Dean</a></td>
-                                                    <td>2008-03-19</td>
-                                                    <td>Boiled</td>
-                                                    <td>Approve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>10</td>
-                                                    <td><a href="recipe_detail.html">Mario Norris</a></td>
-                                                    <td><img src="img/recipes/recipe-avatar10.jpg" width="100" height="100"/></td>
-                                                    <td><a href="user_detail.html">Mario Norris</a></td>
-                                                    <td>2010-02-08</td>
-                                                    <td>Fall</td>
-                                                    <td>Approve</td>
-                                                </tr>                              
+                                                <h:form>
+                                                    <c:forEach items="#{recipeManagedBean.recipes}" var="recipe">
+                                                        <tr>
+                                                            <td>#{recipeManagedBean.recipes.indexOf(recipe) + 1}</td>
+                                                            <td>#{recipe.title}</td>
+                                                            <td><img src="#{recipe.pictureUrl}" width="100" height="100"/></td>
+                                                            <td>#{recipe.owner}</td>
+                                                            <td>#{recipeManagedBean.convertTime(recipe.createdTime)}</td>
+                                                            <td>#{recipe.favoriteNumber}</td>
+
+                                                            <td>
+
+                                                                <c:set var="status" value="#{recipe.statusFlag}"/>
+                                                                <c:if test="${ status == 1}">
+                                                                    <h:outputText value="Approve"/>
+                                                                </c:if>
+                                                                <c:if test="${ status == 0}">
+                                                                    <h:outputText value="Report"/>
+                                                                </c:if>
+                                                                <c:if test="${ status == -1}">
+                                                                    <h:outputText value="REMOVED"/>
+                                                                </c:if>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </h:form>                             
                                             </tbody>
                                         </table>
+                                        <!--end table-->
                                         <div>
                                             <ul class="pagination pull-right">
                                                 <li><a href="#">«</a></li>
@@ -359,8 +303,7 @@
             $(document).ready(function () {
                 $("#owl-slider").owlCarousel({
                     navigation: true,
-                    slideSpeed: 300,
-                    paginationSpeed: 400,
+                    slideSpeed: 300, paginationSpeed: 400,
                     singleItem: true
 
                 });
@@ -382,8 +325,7 @@
                                 scale: ['#000', '#000'],
                                 normalizeFunction: 'polynomial'
                             }]
-                    },
-                    backgroundColor: '#eef3f7',
+                    }, backgroundColor: '#eef3f7',
                     onLabelShow: function (e, el, code) {
                         el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
                     }
