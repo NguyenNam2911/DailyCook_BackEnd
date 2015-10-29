@@ -1,5 +1,6 @@
 package com.vn.dailycookapp.utils;
 
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -20,4 +21,10 @@ public class TimeUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd");
 		return sdf.format(new Date(getCurrentGMTTime()));
 	}
+        
+        public static String convertTime(long time) {
+            Date date = new Date(time);
+            Format format = new SimpleDateFormat("dd-MM-yyyy");
+            return format.format(date);
+        }
 }

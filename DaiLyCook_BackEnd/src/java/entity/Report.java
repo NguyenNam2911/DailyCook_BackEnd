@@ -25,8 +25,8 @@ public class Report {
     @Property("recipe")
     private String recipe;
 
-    @Property("resion")
-    private String resion;
+    @Property("reason")
+    private String reason;
 
     @Property("status")
     private int status = ACTIVE_FLAG;
@@ -64,12 +64,12 @@ public class Report {
         this.recipe = recipe;
     }
 
-    public String getResion() {
-        return resion;
+    public String getReason() {
+        return reason;
     }
 
-    public void setResion(String resion) {
-        this.resion = resion;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public int getStatus() {
@@ -103,7 +103,5 @@ public class Report {
     public void setReportTime(long reportTime) {
         this.reportTime = reportTime;
     }
-    
-    
     
 }
