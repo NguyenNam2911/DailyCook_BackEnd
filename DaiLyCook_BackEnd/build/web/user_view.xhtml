@@ -210,7 +210,7 @@
                                                     <c:forEach items="#{userManagedBean.users}" var="user">
                                                         <tr class="user-row">
                                                             <td>#{userManagedBean.users.indexOf(user) + 1}</td>
-                                                            <td>#{user.displayName}</td>
+                                                            <td><h:commandLink value="#{user.displayName}" action="#{userManagedBean.UserDetail(user)}"/> </td>
                                                             <td>#{userManagedBean.convertTime(user.registeredTime)}</td>
                                                             <td>#{user.email}</td>
                                                             <td>#{user.numberRecipes}</td>

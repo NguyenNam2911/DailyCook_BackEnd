@@ -174,11 +174,12 @@
                                             </div>
                                             <h:form>
                                                 <div class="ddl-filter">
-                                                    <h:commandButton class="button-filter" action="#{userManagedBean.Filter()}"/>
-                                                    <h:selectOneMenu value="#{userManagedBean.filter}" onclick="">
+                                                    <h:commandButton class="button-filter" action="#{recipeManagedBean.Filter()}"/>
+                                                    <h:selectOneMenu value="#{recipeManagedBean.filter}" onclick="">
                                                         <f:selectItem itemValue="Filter" itemLabel="All status"/>
-                                                        <f:selectItem itemValue="Active" itemLabel="Active"/>
-                                                        <f:selectItem itemValue="Banned" itemLabel="Banned"/>
+                                                        <f:selectItem itemValue="Approve" itemLabel="Approve"/>
+                                                        <f:selectItem itemValue="Report" itemLabel="Report"/>
+                                                        <f:selectItem itemValue="Removed" itemLabel="Removed"/>
                                                     </h:selectOneMenu>
                                                 </div>    
 

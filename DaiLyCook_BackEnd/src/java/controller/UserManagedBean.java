@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import model.UserModel;
 
 /**
@@ -20,7 +21,7 @@ import model.UserModel;
  * @author Nguyen Hoai Nam
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UserManagedBean {
 
     /**
@@ -31,8 +32,14 @@ public class UserManagedBean {
     List<User> users = new ArrayList<>();
     String search;
     String filter;
+    User userSelected =  new User();
 
 // method
+    public String UserDetail(User u){
+        userSelected = u;
+        return "user_detail";
+    }
+    
     public String convertTime(long time) {
         Date date = new Date(time);
         Format format = new SimpleDateFormat("dd-MM-yyyy");
@@ -84,6 +91,15 @@ public class UserManagedBean {
 
     }
 //get and set
+
+    public User getUserSelected() {
+        return userSelected;
+    }
+
+    public void setUserSelected(User userSelected) {
+        this.userSelected = userSelected;
+    }
+    
 
     public String getFilter() {
         return filter;
