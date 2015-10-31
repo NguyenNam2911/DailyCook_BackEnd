@@ -130,4 +130,8 @@ public class ReportManagedBean {
            listReport = reports;
         }
     }
+    
+    public void approveReportStatus(String id){
+        reportModel.approveReportStatus(id);
+    }
 }

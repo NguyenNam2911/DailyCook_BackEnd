@@ -7,7 +7,10 @@ package dao;
 
 import entity.Report;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
 
 /**
  *
@@ -32,4 +35,16 @@ public class ReportDAO extends AbstractDAO{
         }
         return null;
     }
+    
+    public boolean updateReportStatus(String reportId){
+        try {
+            Query<Report> query = datastore.createQuery(Report.class).field("_id").equal(new ObjectId(reportId));
+            UpdateOperations<Report> updateO = datastore.createUpdateOperations(Report.class).inc("status", 1);
+            UpdateResults result = datastore.update(query, updateO);
+            return result.getUpdatedCount() == 1;
+        } catch (Exception ex) {
+        }
+        return false;
+    }
+    
 }
