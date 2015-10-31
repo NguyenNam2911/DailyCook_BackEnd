@@ -21,4 +21,8 @@ public class ReportModel {
         listReport = ReportDAO.getInstance().getAllReport();
         return listReport;
     }
+    
+    public boolean approveReportStatus(String id){
+        return ReportDAO.getInstance().updateReportStatus(id);
+    }
 }
