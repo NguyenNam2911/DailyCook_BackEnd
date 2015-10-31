@@ -78,16 +78,23 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
+                        <li class="sub-menu" id="li-admin">
                             <a href="javascript:;" class="">
                                 <i class="icon_archive"></i>
                                 <span>Admin</span>
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><a class="" href="admin_managerment.xhtml">View Managerment</a></li>  
+                                <li><a class="" href="admin_managerment.xhtml">View Admin</a></li>  
                             </ul>
-                        </li>   
+                        </li> 
+                        <script>
+                            var role = #{loginManagedBean.flagAdmin};
+                            if (role) {
+                                var element = document.getElementById("li-admin");
+                                element.parentNode.removeChild(element);
+                            }
+                        </script>   
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_profile"></i>
@@ -167,18 +174,19 @@
                                             <div  class="search-panel">
                                                 <!--  search form start -->
                                                 <h:form >
-                                                    <h:commandButton class="button-search" action="#{recipeManagedBean.SearchRecipe()}"/>
+                                                    <h:commandButton class="button-search" action="#{recipeManagedBean.searchRecipe()}"/>
                                                     <h:inputText class="input-search"  a:placeholder="Search By Name" value="#{recipeManagedBean.search}"/>
                                                 </h:form>
                                                 <!--  search form end -->                
                                             </div>
                                             <h:form>
                                                 <div class="ddl-filter">
-                                                    <h:commandButton class="button-filter" action="#{userManagedBean.Filter()}"/>
-                                                    <h:selectOneMenu value="#{userManagedBean.filter}" onclick="">
+                                                    <h:commandButton class="button-filter" action="#{recipeManagedBean.filter()}"/>
+                                                    <h:selectOneMenu value="#{recipeManagedBean.filter}" onclick="">
                                                         <f:selectItem itemValue="Filter" itemLabel="All status"/>
-                                                        <f:selectItem itemValue="Active" itemLabel="Active"/>
-                                                        <f:selectItem itemValue="Banned" itemLabel="Banned"/>
+                                                        <f:selectItem itemValue="Approve" itemLabel="Approve"/>
+                                                        <f:selectItem itemValue="Report" itemLabel="Report"/>
+                                                        <f:selectItem itemValue="Removed" itemLabel="Removed"/>
                                                     </h:selectOneMenu>
                                                 </div>    
 
@@ -290,47 +298,47 @@
         <script src="js/jquery.slimscroll.min.js"></script>
         <script>
 
-            //knob
-            $(function () {
-                $(".knob").knob({
-                    'draw': function () {
-                        $(this.i).val(this.cv + '%')
-                    }
-                })
-            });
+                            //knob
+                            $(function () {
+                                $(".knob").knob({
+                                    'draw': function () {
+                                        $(this.i).val(this.cv + '%')
+                                    }
+                                })
+                            });
 
-            //carousel
-            $(document).ready(function () {
-                $("#owl-slider").owlCarousel({
-                    navigation: true,
-                    slideSpeed: 300, paginationSpeed: 400,
-                    singleItem: true
+                            //carousel
+                            $(document).ready(function () {
+                                $("#owl-slider").owlCarousel({
+                                    navigation: true,
+                                    slideSpeed: 300, paginationSpeed: 400,
+                                    singleItem: true
 
-                });
-            });
+                                });
+                            });
 
-            //custom select box
+                            //custom select box
 
-            $(function () {
-                $('select.styled').customSelect();
-            });
+                            $(function () {
+                                $('select.styled').customSelect();
+                            });
 
-            /* ---------- Map ---------- */
-            $(function () {
-                $('#map').vectorMap({
-                    map: 'world_mill_en',
-                    series: {
-                        regions: [{
-                                values: gdpData,
-                                scale: ['#000', '#000'],
-                                normalizeFunction: 'polynomial'
-                            }]
-                    }, backgroundColor: '#eef3f7',
-                    onLabelShow: function (e, el, code) {
-                        el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-                    }
-                });
-            });
+                            /* ---------- Map ---------- */
+                            $(function () {
+                                $('#map').vectorMap({
+                                    map: 'world_mill_en',
+                                    series: {
+                                        regions: [{
+                                                values: gdpData,
+                                                scale: ['#000', '#000'],
+                                                normalizeFunction: 'polynomial'
+                                            }]
+                                    }, backgroundColor: '#eef3f7',
+                                    onLabelShow: function (e, el, code) {
+                                        el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                                    }
+                                });
+                            });
         </script>
     </body>
 </html>

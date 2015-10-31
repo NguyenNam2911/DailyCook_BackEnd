@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import model.UserModel;
 
 /**
@@ -20,7 +21,7 @@ import model.UserModel;
  * @author Nguyen Hoai Nam
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UserManagedBean {
 
     /**
@@ -31,8 +32,11 @@ public class UserManagedBean {
     List<User> users = new ArrayList<>();
     String search;
     String filter;
+    User userSelected =  new User();
 
 // method
+    
+    
     public String convertTime(long time) {
         Date date = new Date(time);
         Format format = new SimpleDateFormat("dd-MM-yyyy");
@@ -45,8 +49,9 @@ public class UserManagedBean {
 
     }
 
-    public void SearchUser() {
+    public void searchUser() {
         List<User> search_user = new ArrayList<>();
+        users = userModel.getUsersNomrmal();
         if (search != null) {
             for (User user : users) {
                 if (user.getDisplayName().contains(search)) {
@@ -59,8 +64,9 @@ public class UserManagedBean {
         search = "";
     }
 
-    public void Filter() {
+    public void filter() {
         List<User> filter_user = new ArrayList<>();
+        users = userModel.getUsersNomrmal();
         if (!"Filter".equals(filter)) {
             switch (filter) {
                 case "Active":
@@ -84,6 +90,15 @@ public class UserManagedBean {
 
     }
 //get and set
+
+    public User getUserSelected() {
+        return userSelected;
+    }
+
+    public void setUserSelected(User userSelected) {
+        this.userSelected = userSelected;
+    }
+    
 
     public String getFilter() {
         return filter;

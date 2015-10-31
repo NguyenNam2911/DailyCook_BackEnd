@@ -28,13 +28,15 @@ public class LoginManagedBean {
     LoginModel loginModel = new LoginModel();
     boolean pass;
     boolean email;
+    boolean flagAdmin;
 
     public void checkLogin() {
         User user_check = loginModel.CheckLogin(user);
         if (user_check != null) {
             if (user_check.getPassword().equals(user.getPassword())) {
                 user = user_check;
-                JSFutil.navigate("index");
+                flagAdmin = user.getRole().equals("admin");
+                JSFutil.navigate("index?faces-redirect=true");
             } else {
                 pass = true;
                 email = false;
@@ -46,16 +48,25 @@ public class LoginManagedBean {
     }
 
     public void logOut() {
-        JSFutil.navigate("login");
+        JSFutil.navigate("login?faces-redirect=true");
     }
 
     // contructer
     public LoginManagedBean() {
         pass = false;
         email = false;
+        flagAdmin = false;
+    }
+    
+    public boolean isFlagAdmin() {
+        return flagAdmin;
     }
 
     //get and set
+    public void setFlagAdmin(boolean flagAdmin) {    
+        this.flagAdmin = flagAdmin;
+    }
+
     public boolean isPass() {
         return pass;
     }

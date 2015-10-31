@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class RecipeModel {
     
-    //get all recipe
+    //get all recipe namnh
    public List<Recipe> getAllRecipe(){
        List<Recipe> list = new ArrayList<>();
        list = RecipeDAO.getInstance().getAllRecipe();

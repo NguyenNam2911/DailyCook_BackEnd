@@ -41,7 +41,6 @@
 
     <h:body>
         <f:view>
-
             <h:form id="frmMain">
                 <section id="container" class="">
                     <header class="header dark-bg">
@@ -84,16 +83,23 @@
                                         <span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="sub-menu">
+                                <li class="sub-menu" id="li-admin">
                                     <a href="javascript:;" class="">
                                         <i class="icon_archive"></i>
                                         <span>Admin</span>
                                         <span class="menu-arrow arrow_carrot-right"></span>
                                     </a>
                                     <ul class="sub">
-                                        <li><a class="" href="admin_managerment.xhtml">View Managerment</a></li>    
+                                        <li><a class="" href="admin_managerment.xhtml">View Managerment</a></li>  
                                     </ul>
-                                </li>   
+                                </li> 
+                                <script>
+                                    var role = #{loginManagedBean.flagAdmin};
+                                    if (role) {
+                                        var element = document.getElementById("li-admin");
+                                        element.parentNode.removeChild(element);
+                                    }
+                                </script>
                                 <li class="sub-menu">
                                     <a href="javascript:;" class="">
                                         <i class="icon_profile"></i>
@@ -175,7 +181,7 @@
                                                             <!--  search form start -->
 
 
-                                                            <h:commandButton class="button-search" action="#{adminManagedBean.SearchUser()}"/>
+                                                            <h:commandButton class="button-search" action="#{adminManagedBean.searchUser()}"/>
                                                             <h:inputText class="input-search"  a:placeholder="Search By Name" value="#{adminManagedBean.search}"/>
 
                                                             <!--  search form end -->                
@@ -195,39 +201,26 @@
                                                                 <c:forEach items="#{adminManagedBean.users}" var="user">
                                                                     <tr>
                                                                         <td>#{adminManagedBean.users.indexOf(user) + 1}</td>
-                                                                        <td>#{user.displayName}</td>
+                                                                        <td><h:commandLink value="#{user.displayName}" action="#{userDetailManagedBean.UserDetail(user)}" 
+                                                                                           style="color: #1C86EE"  /> 
+                                                                        </td>
                                                                         <td>#{user.email}</td>
                                                                         <td>#{user.phone}</td>
                                                                         <td>
-
                                                                             <h:commandLink value="Remove" />
-
-
-
                                                                         </td>
                                                                     </tr>
-
                                                                 </c:forEach>                 
                                                             </tbody>
                                                         </table>
                                                     </p:panel>
-
-
-
-
-
                                                 </section>
 
                                                 <!--panel create admin start -->
 
                                                 <section class="panel"  >
-
                                                     <div style="text-align: center" id="addAdmin">
-
-
                                                         <div align="center">
-
-
                                                             <p:panel header="Create Admin" id="pnlInput">
                                                                 <p:commandButton id="cmdCreate" disabled="#{!adminManagedBean.addView}" value="Create" process="@this" style="width: 100px;margin: 10px" actionListener="#{adminManagedBean.preAdd(event)}" update=":frmMain:pnlInput"/>
                                                                 <p:commandButton id="cmdCancel" disabled="#{adminManagedBean.addView}" value="Cancel" process="@this" style="width: 100px;margin: 10px" actionListener="#{adminManagedBean.cancel(event)}" update=":frmMain:pnlInput"/>
@@ -261,12 +254,6 @@
                                                                     </tbody>
                                                                 </table>
                                                             </p:panel>
-
-
-
-
-
-
                                                         </div>
                                                     </div>
                                                 </section>
@@ -330,45 +317,45 @@
         <script src="js/jquery.slimscroll.min.js"></script>
         <script>
 
-            //knob
-            $(function () {
-                $(".knob").knob({
-                    'draw': function () {
-                        $(this.i).val(this.cv + '%')
-                    }
-                })
-            });
-            //carousel
-            $(document).ready(function () {
-                $("#owl-slider").owlCarousel({
-                    navigation: true,
-                    slideSpeed: 300,
-                    paginationSpeed: 400,
-                    singleItem: true
-                });
-            });
-            //custom select box
+                                    //knob
+                                    $(function () {
+                                        $(".knob").knob({
+                                            'draw': function () {
+                                                $(this.i).val(this.cv + '%')
+                                            }
+                                        })
+                                    });
+                                    //carousel
+                                    $(document).ready(function () {
+                                        $("#owl-slider").owlCarousel({
+                                            navigation: true,
+                                            slideSpeed: 300,
+                                            paginationSpeed: 400,
+                                            singleItem: true
+                                        });
+                                    });
+                                    //custom select box
 
-            $(function () {
-                $('select.styled').customSelect();
-            });
-            /* ---------- Map ---------- */
-            $(function () {
-                $('#map').vectorMap({
-                    map: 'world_mill_en',
-                    series: {
-                        regions: [{
-                                values: gdpData,
-                                scale: ['#000', '#000'],
-                                normalizeFunction: 'polynomial'
-                            }]
-                    },
-                    backgroundColor: '#eef3f7',
-                    onLabelShow: function (e, el, code) {
-                        el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-                    }
-                });
-            });</script>
+                                    $(function () {
+                                        $('select.styled').customSelect();
+                                    });
+                                    /* ---------- Map ---------- */
+                                    $(function () {
+                                        $('#map').vectorMap({
+                                            map: 'world_mill_en',
+                                            series: {
+                                                regions: [{
+                                                        values: gdpData,
+                                                        scale: ['#000', '#000'],
+                                                        normalizeFunction: 'polynomial'
+                                                    }]
+                                            },
+                                            backgroundColor: '#eef3f7',
+                                            onLabelShow: function (e, el, code) {
+                                                el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                                            }
+                                        });
+                                    });</script>
     </h:body>
 </html>
 

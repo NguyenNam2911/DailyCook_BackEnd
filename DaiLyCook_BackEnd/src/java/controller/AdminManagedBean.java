@@ -6,6 +6,7 @@
 package controller;
 
 import entity.User;
+import java.io.Serializable;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import model.AdminModel;
 import org.apache.commons.lang3.RandomStringUtils;
+
 /**
  *
  * @author Nguyen Hoai Nam
@@ -24,7 +26,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 @ManagedBean
 @ViewScoped
-public class AdminManagedBean extends Object{
+public class AdminManagedBean extends Object implements Serializable {
 
     /**
      * Creates a new instance of AdminManagedBean
@@ -37,33 +39,28 @@ public class AdminManagedBean extends Object{
     Date date;
 
     //method
-    public void save(ActionEvent event){
+    public void save(ActionEvent event) {
         userAdmin.setRole("admin");
         userAdmin.setPassword(RandomStringUtils.randomAlphanumeric(8));
         userAdmin.setRegisteredTime(date.getTime());
-        adminModel  = new AdminModel();
+        adminModel = new AdminModel();
         adminModel.insertAdmin(userAdmin);
         users = adminModel.getUsersAdmin();
-        userAdmin  = new User();
-        addView = true;
-    }
-    public void cancel( ActionEvent event){
         userAdmin = new User();
         addView = true;
     }
 
-    public void preAdd(ActionEvent event){
-        userAdmin = new User( );
+    public void cancel(ActionEvent event) {
+        userAdmin = new User();
+        addView = true;
+    }
+
+    public void preAdd(ActionEvent event) {
+        userAdmin = new User();
         addView = false;
     }
-    public AdminManagedBean() {
-        addView = true; 
-        userAdmin = new User();
-        users = adminModel.getUsersAdmin();
-        date = new Date();
-    }
 
-    public void SearchUser() {
+    public void searchUser() {
         users = adminModel.getUsersAdmin();
         List<User> search_user = new ArrayList<>();
         if (search != null) {
@@ -78,13 +75,18 @@ public class AdminManagedBean extends Object{
         search = "";
     }
 
-    
+    public AdminManagedBean() {
+        addView = true;
+        userAdmin = new User();
+        users = adminModel.getUsersAdmin();
+        date = new Date();
+    }
 
     //get and set
     public String getSearch() {
         return search;
     }
-    
+
     public User getUserAdmin() {
         return userAdmin;
     }
@@ -96,7 +98,8 @@ public class AdminManagedBean extends Object{
     public boolean isAddView() {
         return addView;
     }
-    public void setAddView(boolean addView) {    
+
+    public void setAddView(boolean addView) {
         this.addView = addView;
     }
 
