@@ -4,6 +4,8 @@ import entity.Recipe;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
 
 public class RecipeDAO extends AbstractDAO {
 
@@ -45,5 +47,16 @@ public class RecipeDAO extends AbstractDAO {
         }
 
         return null;
+    }
+    
+    public boolean updateRecipeStatus(String recipeId, int flag){
+        try {
+            Query<Recipe> query = datastore.createQuery(Recipe.class).field("_id").equal(new ObjectId(recipeId));
+            UpdateOperations<Recipe> updateO = datastore.createUpdateOperations(Recipe.class).set("status_flag", flag);
+            UpdateResults result = datastore.update(query, updateO);
+            return result.getUpdatedCount() == 1;
+        } catch (Exception ex) {
+        }
+        return false;
     }
 }

@@ -15,33 +15,32 @@ import java.util.List;
  * @author Nguyen Hoai Nam
  */
 public class UserModel {
-
-    //  getUsersNomrmal  namnh
-
-    public List<User> getUsersNomrmal() {
+    
+    public List<User> getUsersNomrmal(){
         List<User> users = new ArrayList<>();
         List<User> users_normal = new ArrayList<>();
         users = UserDAO.getInstance().getAllUser();
         for (User user : users) {
-            if (user.getRole().equals("normal_user")) {
+            if(user.getRole().equals("normal_user")){
                 users_normal.add(user);
-            }
-
+            }  
         }
         return users_normal;
     }
-
-    public User getUserByID(String id) {
+//  getUsersNomrmal  namnh
+    public User getUserByID(String id){
         return UserDAO.getInstance().getUser(id);
     }
-
-    public String getUserName(String id) {
-        User u = UserDAO.getInstance().getUser(id);
-        if (u != null) {
-            String name = u.getDisplayName();
-            return name;
-        }
-        return "Not available";
-
+    
+    public boolean increaseReportOfUser(String userId){
+        return UserDAO.getInstance().increateReportNumber(userId);
+    }
+    
+    public boolean banUser(String userId, int flag){
+        return UserDAO.getInstance().banUser(userId, flag);
+    }
+    
+    public boolean unBanUser(String userId, int flag){
+        return UserDAO.getInstance().unBanUser(userId);
     }
 }

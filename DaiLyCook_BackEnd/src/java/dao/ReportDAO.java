@@ -27,6 +27,17 @@ public class ReportDAO extends AbstractDAO{
         return instance;
     }
     
+    public Report getReport(String reportId) {
+        try {
+            Query<Report> query = datastore.createQuery(Report.class).field("_id").equal(new ObjectId(reportId));
+            Report report = query.get();
+
+            return report;
+        } catch (Exception ex) {
+        }
+        return null;
+    }
+    
     public List<Report> getAllReport(){
         try{
             Query<Report> query = datastore.createQuery(Report.class);
@@ -36,10 +47,10 @@ public class ReportDAO extends AbstractDAO{
         return null;
     }
     
-    public boolean updateReportStatus(String reportId){
+    public boolean updateReportStatus(String reportId, int flag){
         try {
             Query<Report> query = datastore.createQuery(Report.class).field("_id").equal(new ObjectId(reportId));
-            UpdateOperations<Report> updateO = datastore.createUpdateOperations(Report.class).inc("status", 1);
+            UpdateOperations<Report> updateO = datastore.createUpdateOperations(Report.class).set("status", flag);
             UpdateResults result = datastore.update(query, updateO);
             return result.getUpdatedCount() == 1;
         } catch (Exception ex) {

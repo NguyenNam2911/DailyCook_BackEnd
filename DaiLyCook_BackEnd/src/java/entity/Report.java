@@ -14,8 +14,9 @@ import org.mongodb.morphia.annotations.Property;
  */
 public class Report {
 
-    public static final int ACTIVE_FLAG = 1;
-    public static final int BAN_FLAG = 0;
+    public static final int APPROVE_FLAG = 1;
+    public static final int CHECKING_FLAG = 0;
+    public static final int REMOVE_FLAG = -1;
 
     @Id
     private String id;
@@ -29,7 +30,7 @@ public class Report {
     private String reason;
 
     @Property("status")
-    private int status = ACTIVE_FLAG;
+    private int status = CHECKING_FLAG;
 
     @Property("verify_by")
     private String veryfyBy;

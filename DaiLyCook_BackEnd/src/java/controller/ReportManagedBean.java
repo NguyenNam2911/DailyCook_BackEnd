@@ -5,25 +5,26 @@
  */
 package controller;
 
-
+import com.vn.dailycookapp.utils.TimeUtils;
+import dao.RecipeDAO;
+import dao.UserDAO;
 import entity.Recipe;
 import entity.Report;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import model.RecipeModel;
 import model.ReportModel;
 import model.UserModel;
-import util.TimeUtils;
 
 /**
  *
  * @author KhanhDN
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ReportManagedBean {
 
     /**
@@ -32,7 +33,7 @@ public class ReportManagedBean {
     ReportModel reportModel = new ReportModel();
     RecipeModel recipeModel = new RecipeModel();
     UserModel userModel = new UserModel();
-    List<Report> listReport = new ArrayList<>();
+    List<Report> listReport = new ArrayList<Report>();
     String searchText;
     String filterText;
     int filter;
@@ -111,10 +112,11 @@ public class ReportManagedBean {
     
     public void filter(){
         List<Report> reports = new ArrayList<Report>();
+        listReport = reportModel.getListReports();
         if (filterText != null){
            try{
                filter = Integer.parseInt(filterText);
-               if (filter != 1 && filter !=0)
+               if (filter != 1 && filter !=0 && filter !=2)
                    filter=-1;
            }catch(Exception ex){
                filter=-1;
@@ -123,16 +125,42 @@ public class ReportManagedBean {
             filter=-1;
        }
        
-        if (filter!=-1){
-            for (Report report : listReport){
-                if (report.getStatus() == filter)
-                    reports.add(report);
-           }
+        if (filter!=-1 && filter!=2){
+                for (Report report : listReport){
+                    if (report.getStatus() == filter)
+                        reports.add(report);
+                }
            listReport = reports;
         }
     }
     
     public void approveReportStatus(String id){
+        
+        //remove recipe
         reportModel.approveReportStatus(id);
+        Report report = reportModel.getReportByID(id);
+        recipeModel.removeRecipe(report.getRecipe());
+        
+        //check ban user
+        Recipe recipe = RecipeDAO.getInstance().getRecipe(report.getRecipe());
+        User user = UserDAO.getInstance().getUser(recipe.getOwner());
+        userModel.increaseReportOfUser(user.getId());
+        switch(user.getNumberReport()){
+            case 3:
+                userModel.banUser(user.getId(), User.BAN_FLAG_ONCE);
+                break;
+            case 6:
+                userModel.banUser(user.getId(), User.BAN_FLAG_SECOND);
+                break;
+            case 9:
+                userModel.banUser(user.getId(), User.DELETED_FLAG);
+                break;
+        }
+        listReport = reportModel.getListReports();
+    }
+    
+    public void removeReportStatus(String id){
+        reportModel.removeReportStatus(id);
+        listReport = reportModel.getListReports();
     }
 }
