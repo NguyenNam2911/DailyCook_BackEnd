@@ -5,7 +5,6 @@
  */
 package controller;
 
-import com.vn.dailycookapp.utils.TimeUtils;
 import dao.RecipeDAO;
 import dao.UserDAO;
 import entity.Recipe;
@@ -18,6 +17,7 @@ import javax.faces.bean.ViewScoped;
 import model.RecipeModel;
 import model.ReportModel;
 import model.UserModel;
+import util.TimeUtils;
 
 /**
  *
