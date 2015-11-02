@@ -23,6 +23,14 @@ public class ReportModel {
     }
     
     public boolean approveReportStatus(String id){
-        return ReportDAO.getInstance().updateReportStatus(id);
+        return ReportDAO.getInstance().updateReportStatus(id,Report.APPROVE_FLAG);
+    }
+    
+    public boolean removeReportStatus(String id){
+        return ReportDAO.getInstance().updateReportStatus(id,Report.REMOVE_FLAG);
+    }
+    
+    public Report getReportByID(String id){
+        return ReportDAO.getInstance().getReport(id);
     }
 }

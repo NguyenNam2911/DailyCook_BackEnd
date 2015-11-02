@@ -73,6 +73,47 @@ public class UserDAO extends AbstractDAO {
         }
         return false;
     }
+    
+    public boolean increateReportNumber(String userId) {
+        return updateReportNumber(userId, 1);
+    }
+
+    public boolean decreaseReportNumber(String userId) {
+        return updateReportNumber(userId, -1);
+    }
+    
+    private boolean updateReportNumber(String userId, int number) {
+        try {
+            Query<User> query = datastore.createQuery(User.class).field("_id").equal(new ObjectId(userId));
+            UpdateOperations<User> updateO = datastore.createUpdateOperations(User.class).inc("n_reports", number);
+            UpdateResults result = datastore.update(query, updateO);
+            return result.getUpdatedCount() == 1;
+        } catch (Exception ex) {
+        }
+        return false;
+    }
+    
+    public boolean banUser(String userId, int flag) {
+        try {
+            Query<User> query = datastore.createQuery(User.class).field("_id").equal(new ObjectId(userId));
+            UpdateOperations<User> updateO = datastore.createUpdateOperations(User.class).set("active_flag", flag);
+            UpdateResults result = datastore.update(query, updateO);
+            return result.getUpdatedCount() == 1;
+        } catch (Exception ex) {
+        }
+        return false;
+    }
+    
+    public boolean unBanUser(String userId) {
+        try {
+            Query<User> query = datastore.createQuery(User.class).field("_id").equal(new ObjectId(userId));
+            UpdateOperations<User> updateO = datastore.createUpdateOperations(User.class).set("active_flag", User.ACTIVE_FLAG);
+            UpdateResults result = datastore.update(query, updateO);
+            return result.getUpdatedCount() == 1;
+        } catch (Exception ex) {
+        }
+        return false;
+    }
 
     public List<User> getAllUser() {
         try {

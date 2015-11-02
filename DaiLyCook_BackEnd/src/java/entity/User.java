@@ -17,8 +17,9 @@ public class User {
     public static final String ADMIN_ROLE = "admin";
 
     public static final int ACTIVE_FLAG = 1;
-    public static final int BAN_FLAG = 0;
-    public static final int DELETED_FLAG = -1;
+    public static final int BAN_FLAG_ONCE = 0;
+    public static final int BAN_FLAG_SECOND = -1;
+    public static final int DELETED_FLAG = -2;
 
     @Id
     private String id;
@@ -41,6 +42,9 @@ public class User {
 
     @Property("n_recipes")
     private int numberRecipes;
+    
+    @Property("n_reports")
+    private int numberReport;
 
     @Property("n_follower")
     private int numberFollower;
@@ -150,6 +154,14 @@ public class User {
         this.numberRecipes = numberRecipes;
     }
 
+    public int getNumberReport() {
+        return numberReport;
+    }
+
+    public void setNumberReport(int numberReport) {
+        this.numberReport = numberReport;
+    }
+    
     public int getNumberFollower() {
         return numberFollower;
     }

@@ -27,4 +27,8 @@ public class RecipeModel {
    public Recipe getRecipeByID(String id){
         return RecipeDAO.getInstance().getRecipe(id);
     }
+   
+   public boolean removeRecipe(String id){
+        return RecipeDAO.getInstance().updateRecipeStatus(id, Recipe.REMOVED_FLAG);
+    }
 }

@@ -23,9 +23,7 @@ public class UserModel {
         for (User user : users) {
             if(user.getRole().equals("normal_user")){
                 users_normal.add(user);
-            }
-            
-            
+            }  
         }
         return users_normal;
     }
@@ -34,4 +32,15 @@ public class UserModel {
         return UserDAO.getInstance().getUser(id);
     }
     
+    public boolean increaseReportOfUser(String userId){
+        return UserDAO.getInstance().increateReportNumber(userId);
+    }
+    
+    public boolean banUser(String userId, int flag){
+        return UserDAO.getInstance().banUser(userId, flag);
+    }
+    
+    public boolean unBanUser(String userId, int flag){
+        return UserDAO.getInstance().unBanUser(userId);
+    }
 }
