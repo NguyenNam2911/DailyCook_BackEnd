@@ -32,9 +32,8 @@ public class UserDetailManagedBean {
     }
     
     public String convertTime(long time) {
-        Date date = new Date(time);
-        Format format = new SimpleDateFormat("dd-MM-yyyy");
-        return format.format(date);
+        return util.TimeUtils.convertTime(time);
+        
     }
     public String UserDetail(User u){
         userSelected = u;

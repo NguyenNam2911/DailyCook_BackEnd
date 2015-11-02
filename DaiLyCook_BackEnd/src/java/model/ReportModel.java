@@ -25,4 +25,5 @@ public class ReportModel {
     public boolean approveReportStatus(String id){
         return ReportDAO.getInstance().updateReportStatus(id);
     }
+    
 }

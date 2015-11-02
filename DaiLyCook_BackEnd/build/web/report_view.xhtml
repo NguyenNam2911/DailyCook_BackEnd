@@ -228,7 +228,7 @@
                                                             <td>#{reportManagedBean.getUserName(report.veryfyBy)}</td>
                                                             <td>#{reportManagedBean.convertTime(report.verifyTime)}</td>
                                                             <td>
-                                                                <h:commandLink value="Approve"/>
+                                                                <h:commandLink value="Approve" action="#{reportManagedBean.approveReportStatus(report.id)}"/>
                                                             </td>
                                                             <td>
                                                                 <h:commandLink value="Remove"/>

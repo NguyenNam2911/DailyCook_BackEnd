@@ -5,7 +5,7 @@
  */
 package controller;
 
-import com.vn.dailycookapp.utils.TimeUtils;
+
 import entity.Recipe;
 import entity.Report;
 import entity.User;
@@ -16,6 +16,7 @@ import javax.faces.bean.RequestScoped;
 import model.RecipeModel;
 import model.ReportModel;
 import model.UserModel;
+import util.TimeUtils;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ReportManagedBean {
     ReportModel reportModel = new ReportModel();
     RecipeModel recipeModel = new RecipeModel();
     UserModel userModel = new UserModel();
-    List<Report> listReport = new ArrayList<Report>();
+    List<Report> listReport = new ArrayList<>();
     String searchText;
     String filterText;
     int filter;

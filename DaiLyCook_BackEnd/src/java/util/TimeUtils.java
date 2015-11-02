@@ -1,4 +1,4 @@
-package com.vn.dailycookapp.utils;
+package util;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;

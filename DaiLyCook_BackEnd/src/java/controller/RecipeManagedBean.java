@@ -14,6 +14,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import model.RecipeModel;
+import model.UserModel;
 
 /**
  *
@@ -27,16 +28,21 @@ public class RecipeManagedBean {
      * Creates a new instance of RecipeManagedBean
      */
     private Recipe recipe;
-    private RecipeModel recipeModel;
-    List<Recipe> recipes = new ArrayList<>();
-    String search;
-    String filter;
+    private final RecipeModel recipeModel;
+    private List<Recipe> recipes = new ArrayList<>();
+    private String search;
+    private String filter;
+    private UserModel userModel;
 
     //method
     public String convertTime(long time) {
-        Date date = new Date(time);
-        Format format = new SimpleDateFormat("dd-MM-yyyy");
-        return format.format(date);
+        return util.TimeUtils.convertTime(time);
+    }
+    
+    public String getOwnerName(String id){
+        userModel = new UserModel();
+        String name = userModel.getUserName(id);
+        return name;
     }
 
     public void filter() {
@@ -93,6 +99,7 @@ public class RecipeManagedBean {
         recipeModel = new RecipeModel();
         recipes = recipeModel.getAllRecipe();
         recipe = new Recipe();
+        userModel = new UserModel();
 
     }
     //get and set

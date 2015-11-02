@@ -207,9 +207,15 @@
                                                     <c:forEach items="#{recipeManagedBean.recipes}" var="recipe">
                                                         <tr>
                                                             <td>#{recipeManagedBean.recipes.indexOf(recipe) + 1}</td>
-                                                            <td>#{recipe.title}</td>
+                                                            <td>
+                                                                <h:commandLink value="#{recipe.title}" action="#{recipeDetailManagedBean.recipeDetail(recipe)}"
+                                                                               style="color: #1C86EE"/>
+
+                                                            </td>
                                                             <td><img src="#{recipe.pictureUrl}" width="100" height="100"/></td>
-                                                            <td>#{recipe.owner}</td>
+                                                            <td>
+                                                                #{recipeManagedBean.getOwnerName(recipe.owner)}
+                                                            </td>
                                                             <td>#{recipeManagedBean.convertTime(recipe.createdTime)}</td>
                                                             <td>#{recipe.favoriteNumber}</td>
 
