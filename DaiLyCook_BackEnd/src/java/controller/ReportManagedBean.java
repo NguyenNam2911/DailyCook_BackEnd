@@ -163,4 +163,5 @@ public class ReportManagedBean {
         reportModel.removeReportStatus(id);
         listReport = reportModel.getListReports();
     }
+    
 }
