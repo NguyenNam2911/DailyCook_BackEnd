@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class UserModel {
     
+    //  getUsersNomrmal  namnh
     public List<User> getUsersNomrmal(){
         List<User> users = new ArrayList<>();
         List<User> users_normal = new ArrayList<>();
@@ -27,7 +28,18 @@ public class UserModel {
         }
         return users_normal;
     }
-//  getUsersNomrmal  namnh
+
+    public List<User> getBanUser(){
+        List<User> normalUsers = new ArrayList<User>();
+        normalUsers = getUsersNomrmal();
+        List<User> banUsers = new ArrayList<User>();
+        for (User user : normalUsers){
+            if (user.getActiveFlag() != User.ACTIVE_FLAG)
+                banUsers.add(user);
+        }
+        return banUsers;
+    }
+    
     public User getUserByID(String id){
         return UserDAO.getInstance().getUser(id);
     }
